@@ -10,7 +10,7 @@ feature 'restaurants' do
   end
 
   context 'restaurants have been added' do
-    before { Restaurant.create(name: 'KFC') }
+    before { Restaurant.create(name: 'Chipotle') }
 
     scenario 'display restaurants' do
       visit '/restaurants'
