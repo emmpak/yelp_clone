@@ -40,4 +40,20 @@ feature 'restaurants' do
       expect(current_path).to eq "/restaurants/#{chipotle.id}"
     end
   end
+
+  context 'updating restaurants' do
+    before { Restaurant.create name: 'Chipotle', description: 'Mexican', id: 1 }
+
+    scenario 'let a user edit a restaurant' do
+      visit '/restaurants'
+      click_link 'Edit Chipotle'
+      fill_in 'Name', with: 'Chipotle'
+      fill_in 'Description', with: 'Mexican burrito'
+      click_button 'Update Restaurant'
+      click_link 'Chipotle'
+      expect(page).to have_content 'Chipotle'
+      expect(page).to have_content 'Mexican burrito'
+      expect(current_path).to eq '/restaurants/1'
+    end
+  end
 end
