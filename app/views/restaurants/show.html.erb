@@ -1,2 +1,8 @@
 <p><%= @restaurant.name %></p>
 <p><%= @restaurant.description %></p>
+<% @restaurant.reviews.each do |review| %>
+  <div id='single-review'>
+    <%= review.thoughts %>
+    <%= review.rating %>
+  </div>
+<% end %>
